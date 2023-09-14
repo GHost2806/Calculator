@@ -134,15 +134,25 @@ struct ContentView: View {
         case .clear:
             self.value = "0"
             self.currentOperation = .none
-        case .decimal, .negative, .percent:
-            break
+        case .decimal:
+            if !self.value.contains(".") {
+                            self.value += "."
+                        }
+        case .percent:
+                if let currentValue = Double(self.value) {
+                    self.value = "\(currentValue / 100)"
+                }
+        case .negative:
+                if let currentValue = Double(self.value) {
+                    self.value = "\(-currentValue)"
+                }
         default:
             let number = button.rawValue
             if self.value == "0" {
-                value = number
-            } else {
-                self.value = "\(self.value)\(number)"
-            }
+                            value = button.rawValue
+                        } else {
+                            self.value = "\(self.value)\(button.rawValue)"
+                        }
         }
     }
     
