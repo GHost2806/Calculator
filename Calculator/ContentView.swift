@@ -11,8 +11,16 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ZStack {
-                color.black.edgesIgnoringSafeArea(.all)
-                
+                Color.black.edgesIgnoringSafeArea(.all)
+                VStack{
+                    HStack{
+                        Spacer()
+                        Text("0")
+                            .bold()
+                            .font(.system(size:52))
+                            .foregroundColor(.white)
+                    }
+                }
             }
         }
     }
